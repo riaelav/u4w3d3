@@ -1,7 +1,7 @@
 package valeriapagliarini.entities;
 
 import jakarta.persistence.*;
-import valeriapagliarini.Application;
+import valeriapagliarini.enums.Gender;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,13 +18,13 @@ public class Person {
     private String surname;
     private String email;
     private LocalDate birth;
-    private Application.Gender gender;
+    private Gender gender;
 
 
     //manytomany perchè una persona può andare a più eventi e gli eventi possono avere più parteciapnti
     @ManyToMany
 
-    @JoinTable(name = "participants",
+    @JoinTable(name = "participations",
 
             joinColumns = @JoinColumn(name = "person_id", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "event_id", nullable = false))
@@ -36,7 +36,7 @@ public class Person {
     }
 
     //costruttore
-    public Person(String name, String surname, String email, LocalDate birth, Application.Gender gender) {
+    public Person(String name, String surname, String email, LocalDate birth, Gender gender) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -85,11 +85,11 @@ public class Person {
         this.birth = birth;
     }
 
-    public Application.Gender getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(Application.Gender gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 

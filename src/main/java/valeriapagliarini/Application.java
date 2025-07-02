@@ -69,10 +69,10 @@ public class Application {
         p1.setEventsList(eventList);
 
 
-        pd.save(p1);
+       /* pd.save(p5);
 
         em.close();
-        emf.close();
+        emf.close();*/
 
     }
 
